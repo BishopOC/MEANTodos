@@ -2,6 +2,11 @@ var express = require('express');
 var todosRouter = express.Router();
 var Todos = require('../models/todos.models');
 
+todosRouter.use(express.static(__dirname + '/../public'));
+todosRouter.get('/', function(req, res){
+  res.sendFile('index.html', {root: __dirname + '/../public/html'});
+});
+
 todosRouter.get('/todos', function(req, res){
   Todos.find({}, function(err, docs){
     if(err){
