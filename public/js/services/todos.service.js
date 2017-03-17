@@ -13,10 +13,13 @@
       function create(todo){
         return $http.post(baseURL, todo);
       }
-
+      function deleteTodo(todo){
+        return $http.delete(`${baseURL}/${todo._id}`);
+      }
       return {
         getAll: getAll,
-        create: create
+        create: create,
+        delete: deleteTodo
       };
     }
 })()
