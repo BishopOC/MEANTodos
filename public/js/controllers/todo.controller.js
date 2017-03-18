@@ -9,7 +9,24 @@
   $scope.newTodo = {};
   $scope.addTodo = addTodo;
   $scope.deleteTodo = deleteTodo;
+  $scope.update = update;
+  $scope.edit = edit;
   getTodos();
+
+  function edit(todo){
+    console.log('editting...');
+    todo.edit = true;
+  }
+
+  function update(todo){
+    console.log('updating....');
+    todo.edit = false;
+    TodoService.update(todo)
+               .then(function(response){
+                 getTodos();
+               });
+  }
+
   function deleteTodo(todo){
     TodoService.delete(todo)
                .then(function(response){
