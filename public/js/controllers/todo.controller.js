@@ -12,6 +12,7 @@
       $scope.update = update;
       $scope.edit = edit;
 
+
       getTodos();
 
       $scope.$watch(function watcher(){
@@ -20,6 +21,7 @@
       function onChange(){
         $scope.todos = TodoService.fetch();
       });
+
 
       function edit(todo){
         console.log('editing...');
